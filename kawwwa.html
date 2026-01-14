@@ -160,7 +160,7 @@
         .package-desc2 {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             line-height: 1.4;
             margin-bottom: 15px;
             color: #555;
@@ -255,19 +255,6 @@
             padding: 60px 40px;
         }
 
-        /* .logo-symbol {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: var(--accent-copper);
-            border: 2px solid var(--accent-copper);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 10px;
-        } */
 
         .intro {
             font-family: 'Playfair Display', serif;
@@ -350,7 +337,7 @@
         /* Nazwa pakietu obok ikony */
         .plan-card h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.65rem;
             color: var(--text-main);
             text-align: left;
             margin: 0;
@@ -367,6 +354,8 @@
             margin-bottom: 10px;
             display: block;
         }
+
+
 
         .plan-price-tag {
             text-align: left;
@@ -427,11 +416,22 @@
 
         .rules-footer h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 16px;
+            font-size: 1.2rem;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             color: var(--text-main);
         }
+        .plan-sub2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            font-weight: 600;
+            margin-top: 8px;
+            /* margin-bottom: 10px; */
+            display: block;
+        }
+
 
         .rules-grid {
             display: grid;
@@ -598,7 +598,8 @@
                 </ul>
                 <div class="price-box">
                     <span class="price-label">Inwestycja:</span>
-                    <span class="price-amount">od 2 900</span>
+                    <span class="price-currency">od </span>
+                    <span class="price-amount"> 2 900</span>
                     <span class="price-currency">PLN netto</span>
                 </div>
             </div>
@@ -638,7 +639,8 @@
                 </ul>
                 <div class="price-box">
                     <span class="price-label">Inwestycja:</span>
-                    <span class="price-amount">od 4 200</span>
+                    <span class="price-currency">od </span>
+                    <span class="price-amount"> 4 200</span>
                     <span class="price-currency">PLN netto</span>
                 </div>
             </div>
@@ -770,19 +772,19 @@
             <div class="rules-grid">
                 <div class="rule-item">
                     <!-- <span class="rule-icon">📜</span> -->
-                    <p><strong>Zakres prac</strong><br>Czas w pakiecie przeznaczamy na opiekę, edycję i&nbsp;drobne
+                    <p><strong class="plan-sub2">Zakres prac</strong><br>Czas w pakiecie przeznaczamy na opiekę, edycję i&nbsp;drobne
                         zmiany.
-                        Budowę nowych podstron czy funkcji wyceniam osobno (dla VIP-ów z&nbsp;rabatem!).
+                        Budowę nowych podstron czy funkcji wyceniam osobno <br>(dla VIP-ów z&nbsp;rabatem!).
                     </p>
                 </div>
                 <div class="rule-item">
                     <!-- <span class="rule-icon">🔄</span> -->
-                    <p><strong>Regularność</strong><br>Niewykorzystane godziny nie przechodzą na kolejny miesiąc.
+                    <p><strong class="plan-sub2">Regularność</strong><br>Niewykorzystane godziny nie przechodzą na kolejny miesiąc.
                         Dzięki temu dbamy o&nbsp;stronę na bieżąco, a&nbsp;nie "zrywami".</p>
                 </div>
                 <div class="rule-item">
                     <!-- <span class="rule-icon">⏱️</span> -->
-                    <p><strong>Rozliczanie</strong><br>Czas pracy zliczam co 15 minut. Szybka wymiana zdjęcia
+                    <p><strong class="plan-sub2">Rozliczanie</strong><br>Czas pracy zliczam co 15 minut. Szybka wymiana zdjęcia
                         zajmuje kwadrans i&nbsp;tylko tyle odejmuję z&nbsp;Twojego pakietu.</p>
                 </div>
             </div>
