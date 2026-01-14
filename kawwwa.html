@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pełna Oferta - Kawwwa.online</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- 1. ZMIENNE GLOBALNE --- */
+        :root {
+            --bg-paper: #F9F8F4;
+            --bg-dark: #3E3A37;
+            --text-main: #3E3A37;
+            --accent-copper: #D4AF9C;
+            --accent-peach: #EAC4B3;
+            --a4-width: 210mm;
+            --a4-height: 296mm;
+            --white: #FFFFFF;
+        }
+
+        /* --- 2. RESET & DRUK --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            background-color: #555;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+            font-family: 'Lato', sans-serif;
+            color: var(--text-main);
+        }
+
+        /* --- 3. KARTKA A4 --- */
+        .sheet {
+            background-color: var(--bg-paper);
+            width: var(--a4-width);
+            height: var(--a4-height);
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- 4. STYLE STRON 1 i 2 --- */
+        .page-header {
+            text-align: center;
+            margin-bottom: 25px;
+            flex-shrink: 0;
+        }
+
+        .mini-logo {
+            width: 68px;
+            height: 68px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-copper);
+            font-weight: 700;
+        }
+
+        .packages-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .package-card {
+            border: 1px solid rgba(212, 175, 156, 0.4);
+            background: #fff;
+            padding: 25px 35px;
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .package-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 156, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            color: var(--accent-copper);
+            flex-shrink: 0;
+        }
+
+        .icon-box svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            line-height: 1;
+            margin: 0 0 5px 0;
+            color: var(--text-main);
+        }
+
+        .package-sub-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+        }
+
+        .main-claim {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-copper);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .package-desc {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .package-desc2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        ul.features {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        ul.features li {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            padding-left: 15px;
+            position: relative;
+            color: #4a4a4a;
+        }
+
+        ul.features li::before {
+            content: '◆';
+            color: var(--accent-peach);
+            position: absolute;
+            left: 0;
+            top: 1px;
+            font-size: 0.6rem;
+        }
+
+        .price-box {
+            margin-top: auto;
+            padding-top: 10px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .price-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-copper);
+            font-weight: 700;
+        }
+
+        .price-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .price-currency {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--bg-dark);
+            color: var(--bg-paper);
+            padding: 4px 12px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .sheet-footer {
+            margin-top: 25px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #D4AF9C 0%, #EAC4B3 100%);
+            color: #fff;
+            padding: 12px 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+
+        /* --- 5. STYLE STRONY 3 (Abonamenty) --- */
+        .sheet.plans-page {
+            padding: 60px 40px;
+        }
+
+        /* .logo-symbol {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--accent-copper);
+            border: 2px solid var(--accent-copper);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        } */
+
+        .intro {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #555;
+            max-width: 80%;
+            margin: 0 auto;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .plans-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+            flex-grow: 1;
+        }
+
+        .plan-card {
+            background: var(--white);
+            border: 1px solid rgba(212, 175, 156, 0.3);
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .plan-card.vip {
+            border: 2px solid var(--accent-copper);
+            box-shadow: 0 10px 30px rgba(212, 175, 156, 0.2);
+            /* transform: scale(1.02); */
+            z-index: 10;
+        }
+
+        .vip-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-copper);
+            color: #fff;
+            font-size: 8px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* --- HEADER ABONAMENTU (Zmieniony) --- */
+        .plan-header {
+            display: flex;
+            align-items: center;
+            /* Wyrównanie ikony i tekstu w pionie */
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(212, 175, 156, 0.2);
+            /* Separator */
+            text-align: left;
+        }
+
+        .plan-icon-wrapper {
+            width: 36px;
+            height: 36px;
+            color: var(--accent-copper);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-icon-wrapper svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Nazwa pakietu obok ikony */
+        .plan-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-main);
+            text-align: left;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        /* Podtytuł POD separatorem */
+        .plan-sub {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-copper);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .plan-price-tag {
+            text-align: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.85rem;
+            color: var(--text-main);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .plan-price-tag span {
+            font-size: 0.8rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: #777;
+        }
+
+        .plan-price-note {
+            display: block;
+            text-align: left;
+            font-size: 0.65rem;
+            color: var(--accent-copper);
+            font-weight: 700;
+            margin-bottom: 15px;
+            min-height: 12px;
+        }
+
+        ul.plan-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.plan-list li {
+            font-size: 0.82rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            padding-left: 12px;
+            position: relative;
+            color: #555;
+            text-align: left;
+        }
+
+        ul.plan-list li::before {
+            content: '◆';
+            color: var(--accent-copper);
+            position: absolute;
+            left: 0;
+            top: 3px;
+            font-size: 0.6rem;
+        }
+
+        .rules-footer {
+            margin-top: 20px;
+            border-top: 1px solid rgba(212, 175, 156, 0.4);
+            padding-top: 20px;
+        }
+
+        .rules-footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .rule-item p {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #666;
+            text-align: center;
+        }
+
+        .rule-icon {
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                display: block;
+            }
+
+            .sheet {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: 100vh;
+                page-break-after: always;
+                break-after: always;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="sheet">
+        <div class="page-header">
+            <img src="images/kawwwa.png" alt="Logo" class="mini-logo">
+            <h1>Menu Usług Online</h1>
+            <p class="subtitle">Strony Internetowe & Wizerunek</p>
+        </div>
+
+        <div class="packages-wrapper">
+            <div class="package-card">
+                <div class="tag">Bestseller na start</div>
+                <div class="package-header">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 10v4a6 6 0 0 0 6 6h2a6 6 0 0 0 6-6v-4H7z" />
+                            <path d="M21 13h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-3" />
+                            <line x1="4" y1="22" x2="24" y2="22" />
+                        </svg>
+                    </div>
+                    <div class="header-content">
+                        <h2>Espresso</h2>
+                        <span class="package-sub-title">One-Page / Landing Page</span>
+                    </div>
+                </div>
+                <span class="main-claim">Idealny, gdy potrzebujesz szybkiego, mocnego startu.</span>
+                <p class="package-desc">Wizytówka One-Page na start Szybka, lekka strona, która sprzedaje.</p>
+                <ul class="features">
+                    <li><strong>Format One-Page: </strong> Wszystkie kluczowe sekcje (Hero, O Tobie, Oferta, Kontakt) na
+                        jednej, płynnej stronie.</li>
+                    <li><strong>Responsywność 2.0: </strong> Gwarancja czytelności na smartfonach (ponad 70% ruchu).
+                    </li>
+                    <li><strong>Pełna konfiguracja: </strong> Biorę na siebie domenę, certyfikat SSL (kłódka), firmowy
+                        e-mail i podpięcie Social Media.</li>
+                    <li><strong>Szybkość i RODO: </strong> Optymalizacja pod Google + wdrożenie paska cookies i zgód.
+                    </li>
+                </ul>
+                <div class="price-box">
+                    <span class="price-label">Inwestycja:</span>
+                    <span class="price-currency">od </span>
+                    <span class="price-amount"> 1 200</span>
+                    <span class="price-currency">PLN netto</span>
+                </div>
+            </div>
+
+            <div class="package-card" style="background-color: #FBF9F7; border-color: #D4AF9C;">
+                <div class="tag" style="background-color: #D4AF9C;">Wybór Ekspertek</div>
+                <div class="package-header">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 6v14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V6H8z" />
+                            <path d="M20 10h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3" />
+                            <line x1="6" y1="26" x2="22" y2="26" />
+                        </svg>
+                    </div>
+                    <div class="header-content">
+                        <h2>Lungo</h2>
+                        <span class="package-sub-title">Strona WWW + Blog + CMS</span>
+                    </div>
+                </div>
+                <span class="main-claim">Więcej przestrzeni na Twoją eksperckość.</span>
+                <p class="package-desc">Flagowy produkt dla kobiet budujących markę osobistą. To rozbudowana witryna
+                    - "Mercedes" wśród stron.</p>
+                <ul class="features">
+                    <li><strong>Rozbudowana Struktura: </strong> Do 5 podstron + moduł Blogowy budujący Twój autorytet.
+                    </li>
+                    <li><strong>Samodzielność (CMS): </strong> Panel WordPress do łatwej samodzielnej edycji.</li>
+                    <li><strong>Pakiet Bezpieczeństwa: </strong> Instalacja Firewalla i automatycznych kopii zapasowych
+                        (backup).</li>
+                    <li><strong>SEO na start: </strong> Optymalizacja nagłówków, by Google widziało Twoją stronę.</li>
+                    <li><strong>BONUS Wideo-instrukcja: </strong> personalizowany przewodnik po obsłudze Twojej strony.
+                    </li>
+                </ul>
+                <div class="price-box">
+                    <span class="price-label">Inwestycja:</span>
+                    <span class="price-currency">od </span>
+                    <span class="price-amount"> 2 200</span>
+                    <span class="price-currency">PLN netto</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <a href="mailto:gotowa@kawwwa.online" class="cta-btn">Zamawiam: gotowa@kawwwa.online</a>
+        </div>
+    </section>
+
+    <section class="sheet">
+        <div class="page-header">
+            <img src="images/kawwwa.png" alt="Logo" class="mini-logo">
+            <h1>Menu Usług Online</h1>
+            <p class="subtitle">Sklepy Online & Sprzedaż</p>
+        </div>
+
+        <div class="packages-wrapper">
+            <div class="package-card">
+                <div class="tag">Automatyzacja</div>
+                <div class="package-header">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9v11a5 5 0 0 0 5 5h6a5 5 0 0 0 5-5V9H6z" />
+                            <path d="M22 12h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-3" />
+                            <path d="M7 9c1.5-2 4-2 5.5 0s4 2 5.5 0 4-2 5.5 0" />
+                        </svg>
+                    </div>
+                    <div class="header-content">
+                        <h2>Mocca</h2>
+                        <span class="package-sub-title">Sklep Automatyczny (Produkty Cyfrowe)</span>
+                    </div>
+                </div>
+                <span class="main-claim">Słodki smak pasywnego dochodu.</span>
+                <p class="package-desc">System zamienia stronę w bezobsługowy automat sprzedażowy 24/7 dla ebooków i
+                    kursów.</p>
+                <ul class="features">
+                    <li><strong>100% Automatyzacji: </strong> Klient płaci → System wysyła link i fakturę. Ty nie robisz
+                        nic.</li>
+                    <li><strong>Start Sprzedaży: </strong> W cenie konfiguruję do 10 produktów (ebooki, webinary).</li>
+                    <li><strong>Legal E-commerce: </strong> Wdrożenie checkboxów i regulaminu sklepu.</li>
+                    <li><strong>Bezpieczeństwo:</strong> Podstawowe zabezpieczenia przed łatwym kopiowaniem linków.</li>
+                </ul>
+                <div class="price-box">
+                    <span class="price-label">Inwestycja:</span>
+                    <span class="price-amount">od 2 900</span>
+                    <span class="price-currency">PLN netto</span>
+                </div>
+            </div>
+
+            <div class="package-card">
+                <div class="tag">Skalowanie</div>
+                <div class="package-header">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 10v3a4 4 0 0 0 4 4h1a4 4 0 0 0 4-4v-3H3z" />
+                            <path d="M12 12h2a1.5 1.5 0 0 1 1.5 1.5v.5A1.5 1.5 0 0 1 14 15.5h-2" />
+                            <path d="M19 10v3a4 4 0 0 0 4 4h1a4 4 0 0 0 4-4v-3H19z" />
+                            <path d="M28 12h2a1.5 1.5 0 0 1 1.5 1.5v.5A1.5 1.5 0 0 1 30 15.5h-2" />
+                            <line x1="2" y1="19" x2="30" y2="19" />
+                        </svg>
+                    </div>
+                    <div class="header-content">
+                        <h2>Doppio</h2>
+                        <span class="package-sub-title">Pełny Sklep - Fizyczne</span>
+                    </div>
+                </div>
+                <span class="main-claim">Podwójna moc dla biznesu.</span>
+                <p class="package-desc">Wdrożenie dla produktów fizycznych. Stabilna maszyna sprzedażowa zintegrowana z
+                    logistyką.</p>
+                <ul class="features">
+                    <li><strong>Logistyka: </strong> Integracja z Kurierami/InPost + generowanie etykiet wysyłkowych.
+                    </li>
+                    <li><strong>Magazyn PRO: </strong> Obsługa wariantów (rozmiary/kolory), stany magazynowe i
+                        powiadomienia.</li>
+                    <li><strong>Intuicyjne Wyszukiwanie: </strong> Zaawansowane filtrowanie (cena, kolor) i
+                        wyszukiwarka.</li>
+                    <li><strong>Wdrożenie i Import: </strong> Wprowadzam 10 produktów + szkolę Cię z obsługi (lub
+                        importuję bazę z XML).</li>
+                    <li><strong>Skalowalność: </strong> System gotowy na duży ruch i integracje (np. Allegro - opcja).
+                    </li>
+                </ul>
+                <div class="price-box">
+                    <span class="price-label">Inwestycja:</span>
+                    <span class="price-amount">od 4 200</span>
+                    <span class="price-currency">PLN netto</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <a href="mailto:gotowa@kawwwa.online" class="cta-btn">Zamawiam: gotowa@kawwwa.online</a>
+        </div>
+    </section>
+
+    <section class="sheet plans-page">
+
+        <header>
+            <div class="page-header">
+                <img src="images/kawwwa.png" alt="Logo" class="mini-logo">
+                <h1>Techniczne SPA dla Twojej strony</h1>
+                <p class="subtitle">Abonamenty Opiekuńcze</p>
+            </div>
+            <!-- <p class="intro">
+                Strona internetowa jest jak samochód – potrzebuje regularnego przeglądu.
+                Przejmuję te obowiązki, żebyś Ty mogła zająć się biznesem.
+            </p> -->
+        </header>
+
+        <div class="plans-container">
+
+            <div class="plan-card">
+                <div class="plan-header">
+                    <div class="plan-icon-wrapper">
+                        <svg width="50" height="50" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 10v10a6 6 0 0 0 6 6h6a6 6 0 0 0 6-6V10H5z" />
+                            <path d="M23 13h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-3" />
+
+                            <path d="M11 16h6v5a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-5z" />
+                            <path d="M12 16V14a2 2 0 1 1 4 0v2" />
+                            <path d="M14 18v1" />
+                        </svg>
+                    </div>
+                    <h2>Americano</h2>
+                </div>
+
+                <span class="plan-sub">Fundament Bezpieczeństwa</span>
+                <p class="package-desc2">Dla tych, które chcą tylko "świętego spokoju".</p>
+                <div class="plan-price-tag">149 <span>PLN / mies.</span></div>
+                <span class="plan-price-note"></span>
+                <ul class="plan-list">
+                    <li><strong>Monitoring 24/7: </strong> System sprawdza działanie strony non-stop. Jeśli serwer
+                        padnie – reaguję.</li>
+                    <li><strong>Bezpieczne Aktualizacje: </strong> Raz w tygodniu ręcznie aktualizuję WordPressa, motyw
+                        i wtyczki.</li>
+                    <li><strong>Kopie Zapasowe: </strong> Codzienny backup całej strony wysyłany do bezpiecznej chmury.
+                    </li>
+                    <li><strong>Raport:</strong> Raz w miesiącu mail z potwierdzeniem, że Twoja twierdza jest
+                        bezpieczna.</li>
+                </ul>
+            </div>
+
+            <div class="plan-card">
+                <div class="plan-header">
+                    <div class="plan-icon-wrapper">
+                        <svg width="50" height="50" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+                            <path d="M5 10v10a6 6 0 0 0 6 6h6a6 6 0 0 0 6-6V10H5z" />
+
+                            <path d="M23 13h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-3" />
+
+                            <circle cx="14" cy="16" r="4" />
+
+                            <polyline points="14 14 14 16 16 17" />
+
+                        </svg>
+                    </div>
+                    <h2>Cappuccino</h2>
+                </div>
+
+                <span class="plan-sub">Bezpieczeństwo <br>+ Wsparcie</span>
+                <p class="package-desc2">Złoty środek – ochrona i pomocna dłoń</p>
+                <div class="plan-price-tag">299 <span>PLN / mies.</span></div>
+                <span class="plan-price-note"></span>
+                <ul class="plan-list">
+                    <li><strong>Pełna Ochrona: </strong> Wszystko, co w pakiecie Americano (Monitoring, Backup,
+                        Raporty).</li>
+                    <li><strong>1 godzina Wsparcia: </strong> Czas na drobne zmiany w miesiącu (np. wymiana tekstu,
+                        grafiki).</li>
+                    <li><strong>Czas reakcji :</strong> Twoje zgłoszenia realizuję sprawnie – do 48h (dni robocze).</li>
+                </ul>
+            </div>
+
+            <div class="plan-card vip">
+                <div class="vip-badge">Najczęściej Wybierany</div>
+
+                <div class="plan-header">
+                    <div class="plan-icon-wrapper">
+                        <svg width="50" height="50" viewBox="0 0 32 32" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 10v10a6 6 0 0 0 6 6h6a6 6 0 0 0 6-6V10H5z" />
+                            <path d="M23 13h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-3" />
+
+                            <path d="M9 7l2-3 3 2 3-2 2 3H9z" />
+                        </svg>
+                    </div>
+                    <h2>Barista VIP</h2>
+                </div>
+
+                <span class="plan-sub">Pełna Opieka <br>& Priorytet</span>
+                <p class="package-desc2">Twój prywatny dział IT. Opcja najczęściej wybierana.</p>
+                <div class="plan-price-tag">349 <span>PLN / mies.</span></div>
+                <span class="plan-price-note">Tylko 50 zł więcej!</span>
+                <ul class="plan-list">
+                    <li><strong>Pełna Ochrona: </strong> Wszystko, co w pakiecie Americano (Monitoring, Backup,
+                        Raporty).</li>
+                    <li><strong>Aż 3 godziny pracy: </strong> Duży zapas czasu na regularne zmiany, prowadzenie bloga
+                        czy rozbudowę.</li>
+                    <li><strong>Priorytet VIP: </strong> Twoje maile trafiają na szczyt listy. Realizacja zadań
+                        zazwyczaj do 24h.</li>
+                    <li><strong>Doradztwo:</strong> Masz pytanie "co ulepszyć"? W ramach pakietu doradzam najlepsze
+                        rozwiązania.</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="sheet-footer">
+            <a href="mailto:gotowa@kawwwa.online" class="cta-btn">Zamawiam: gotowa@kawwwa.online</a>
+        </div>
+        <div class="rules-footer">
+            <h3>Zasady Współpracy</h3>
+            <div class="rules-grid">
+                <div class="rule-item">
+                    <!-- <span class="rule-icon">📜</span> -->
+                    <p><strong>Zakres prac</strong><br>Czas w pakiecie przeznaczamy na opiekę, edycję i&nbsp;drobne
+                        zmiany.
+                        Budowę nowych podstron czy funkcji wyceniam osobno (dla VIP-ów z&nbsp;rabatem!).
+                    </p>
+                </div>
+                <div class="rule-item">
+                    <!-- <span class="rule-icon">🔄</span> -->
+                    <p><strong>Regularność</strong><br>Niewykorzystane godziny nie przechodzą na kolejny miesiąc.
+                        Dzięki temu dbamy o&nbsp;stronę na bieżąco, a&nbsp;nie "zrywami".</p>
+                </div>
+                <div class="rule-item">
+                    <!-- <span class="rule-icon">⏱️</span> -->
+                    <p><strong>Rozliczanie</strong><br>Czas pracy zliczam co 15 minut. Szybka wymiana zdjęcia
+                        zajmuje kwadrans i&nbsp;tylko tyle odejmuję z&nbsp;Twojego pakietu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
