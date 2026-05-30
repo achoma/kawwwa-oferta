@@ -304,152 +304,169 @@
 
 <body>
 
-    <div class="cv-container">
+   <style>
+    /* * SNIPPET NAME: Premium Rose Gold Button (kawwwa.online Style)
+ * DESCRIPTION: Przycisk z metalicznym gradientem, subtelnym połyskiem w tle i interaktywnym hoverem.
+ * AUTHOR: Wsparcie Koderskie
+ * RECYCLING: Zapisz do biblioteki snippetów. Można sprzedawać jako "Premium Button Pack".
+ */
+body{background-color: #999;
+    margin-top: 260px;
+    justify-content: center;
+    justify-items: center;}
 
-        <aside class="sidebar">
-            <div class="profile-photo"
-                style="background-image: url('images/Agnieszka Choma.png');">
-            </div>
+ .kawwwa-rose-btn {
+    /* --- BASE STYLES --- */
+    background: linear-gradient(135deg, #ba7d70 0%, #f3c5b6 50%, #ba7d70 100%);
+    background-size: 200% auto;
+    
+    color: #ffffff !important;
+    font-weight: 700;
+    /* [TWEAK] Zwiększyłem lekko tracking liter - to zawsze dodaje elegancji */
+    letter-spacing: 1px; 
+    text-transform: uppercase; /* Opcjonalnie: WIELKIE LITERY wyglądają pewniej */
+    font-size: 14px; /* Jeśli używasz uppercase, zmniejsz nieco font */
 
-            <div class="contact-info">
-                <div class="section-title-sidebar">Kontakt</div>
-                <div class="contact-item">📧 aga.choma02@gmail.com</div>
-                <div class="contact-item">📞 +48 509 016 515</div>
-                <div class="contact-item">🔗 LinkedIn | GitHub</div>
-                <div class="contact-item">🌐 Portfolio</div>
-            </div>
+    border: none !important; /* ZERO BORDERA */
+    
+    /* [KLUCZ DO SUKCESU] Gra cieni: */
+    /* 1. inset 0 1px... -> To jest ten "Top Highlight" (światło od góry) */
+    /* 2. 0 10px 20px... -> To jest miękki cień rzucany na stronę */
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 8px 20px rgba(186, 125, 112, 0.25); 
 
-            <div class="section-title-sidebar">Umiejętności</div>
+    border-radius: 50px;
+    padding: 16px 40px;
+    
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
 
-            <ul class="skills-list">
-                <span class="skill-category">Frontend & Core</span>
-                <li>HTML5 / CSS3</li>
-                <li>JavaScript (ES6+)</li>
-                <li>Responsive Web Design</li>
-                <li>Mobile-first Approach</li>
-                <li>Fetch API / LocalStorage</li>
+/* --- IDLE ANIMATION (Bez zmian - ten subtelny błysk jest idealny) --- */
+.kawwwa-rose-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(25deg);
+    animation: sheenFlow 6s infinite ease-in-out; 
+    z-index: -1;
+}
 
-                <span class="skill-category">WordPress Ecosystem</span>
-                <li>WordPress Development</li>
-                <li>WooCommerce</li>
-                <li>Elementor & Breakdance</li>
-                <li>Gutenberg Blocks (ACF)</li>
+@keyframes sheenFlow {
+    0% { left: -60%; opacity: 0; }
+    10% { opacity: 0.6; } /* Zmniejszyłem opacity, żeby było subtelniej */
+    30% { left: 140%; opacity: 0; }
+    100% { left: 140%; opacity: 0; }
+}
 
-                <span class="skill-category">Backend & Tools</span>
-                <li>PHP (Podstawy/Średni)</li>
-                <li>REST API</li>
-                <li>Git / GitHub</li>
-                <li>Figma (Dev Handover)</li>
-            </ul>
+/* --- HOVER STATE --- */
+.kawwwa-rose-btn:hover {
+    background-position: right center;
+    transform: translateY(-2px); /* Delikatne uniesienie */
+    
+    /* Na hoverze wzmacniamy światło i rozmywamy cień */
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.5), /* Mocniejszy błysk na górze */
+        0 15px 30px rgba(186, 125, 112, 0.4);   /* Duża, miękka poświata */
+}
 
-            <div class="section-title-sidebar">Języki</div>
-            <ul class="skills-list">
-                <li>Polski (Ojczysty)</li>
-                <li>Angielski (B2)</li>
-            </ul>
-        </aside>
+/* --- ACTIVE STATE (Kliknięcie) --- */
+/* To daje uczucie "wciskania" przycisku - super dla UX */
+.kawwwa-rose-btn:active {
+    transform: translateY(1px);
+    box-shadow: 
+        inset 0 2px 5px rgba(0,0,0,0.1), /* Wewnętrzny cień sugerujący wklęsłość */
+        0 5px 10px rgba(186, 125, 112, 0.3);
+}
 
-        <main class="main-content">
+.kawwwa-rose-btn:hover::after {
+    animation: none;
+}
+.kawwwa-rose-btn2 {
+    /* --- BASE STYLES --- */
+    background: linear-gradient(135deg, #ba7d70 0%, #f3c5b6 50%, #ba7d70 100%);
+    background-size: 200% auto;
+    
+    color: #ffffff !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    
+    /* [NEW] DIAMOND CUT BORDER */
+    /* 1px ramka, ale półprzezroczysta biała - wygląda jak krawędź łapiąca światło */
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    
+    /* [NEW] DEPTH EFFECT */
+    /* Pierwszy cień to wewnętrzny blask (góra przycisku), drugi to cień zewnętrzny */
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3), /* Wewnętrzny odblask na górze */
+        0 5px 15px rgba(186, 125, 112, 0.3);    /* Cień rzucany na tło */
 
-            <header class="header-name">
-                <h1>Agnieszka Choma</h1>
-                <h2>Web Developer</h2>
-            </header>
+    border-radius: 50px;
+    padding: 15px 35px;
+    
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
 
-            <div class="summary">
-                WordPress Developer z doświadczeniem w tworzeniu i optymalizacji sklepów WooCommerce. Specjalizuję się w
-                pracy z builderami stron oraz optymalizacji UX/UI. Moim celem jest wniesienie wartości biznesowej
-                (Profit First) przy jednoczesnym rozwoju w kierunku nowoczesnego Front-endu.
-            </div>
+/* --- IDLE ANIMATION (Bez zmian - działa świetnie) --- */
+.kawwwa-rose-btn2::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(25deg);
+    animation: sheenFlow 7s infinite ease-in-out; 
+    z-index: -1;
+}
 
-            <section>
-                <h3 class="section-title-main">Doświadczenie</h3>
+@keyframes sheenFlow {
+    0% { left: -60%; opacity: 0; }
+    10% { opacity: 0.8; }
+    30% { left: 140%; opacity: 0; }
+    100% { left: 140%; opacity: 0; }
+}
 
-                <div class="job-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Web Developer (Freelance)</div>
-                            <div class="job-company">kawwwa.online</div>
-                        </div>
-                        <div class="job-date">2025 – obecnie</div>
-                    </div>
-                    <ul class="job-details">
-                        <li>Projektowanie i modyfikacja stron WordPress (Gutenberg, ACF Blocks, Elementor).</li>
-                        <li>Budowa sklepów WooCommerce: konfiguracja płatności, personalizacja szablonów.</li>
-                        <li>Optymalizacja wydajności (Core Web Vitals) i stabilności wizualnej (CLS).</li>
-                        <li>Wdrażanie analityki (Google Analytics, Clarity) i integracja narzędzi marketingowych.</li>
-                        <li>Strategie SEO i optymalizacja techniczna (cache, minifikacja).</li>
-                    </ul>
-                </div>
+/* --- HOVER STATE (Interakcja) --- */
+.kawwwa-rose-btn2:hover,
+.kawwwa-rose-btn2:focus {
+    background-position: right center;
+    color: #ffffff;
+    transform: translateY(-3px);
+    
+    /* [NEW] HOVER BORDER EFFECT */
+    /* Na hoverze wzmacniamy border, żeby przycisk stał się bardziej "ostry" */
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    
+    /* Wzmacniamy cienie dla efektu unoszenia */
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 10px 25px rgba(243, 197, 182, 0.6); 
+}
 
-                <div class="job-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Konsultant ds. Obsługi Klienta</div>
-                            <div class="job-company">Invo System Sp. z o.o. / Krajowy Instytut Mediów</div>
-                        </div>
-                        <div class="job-date">04.2023 – 02.2025</div>
-                    </div>
-                </div>
-
-                <div class="job-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Kontroler Skarbowy</div>
-                            <div class="job-company">Izba Administracji Skarbowej w Rzeszowie</div>
-                        </div>
-                        <div class="job-date">04.2021 – 05.2023</div>
-                    </div>
-                </div>
-
-                <div class="job-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Młodszy Ekspert Celny</div>
-                            <div class="job-company">Izba Administracji Skarbowej w Przemyślu</div>
-                        </div>
-                        <div class="job-date">07.2006 – 12.2019</div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h3 class="section-title-main">Wybrane Projekty</h3>
-                <div class="project-tags">
-                    <span class="tag">Festiwal Kobiecości 108 cudów</span>
-                    <span class="tag">FlyTransfery24</span>
-                    <span class="tag">Sklep SharkBuy</span>
-                    <span class="tag">Merdam</span>
-                    <span class="tag">Veltaria Group</span>
-                    <span class="tag">Mani Edu Triki</span>
-                    <span class="tag">Feline Breed Checker</span>
-                    <span class="tag">WebStudio</span>
-                </div>
-            </section>
-
-            <section>
-                <h3 class="section-title-main">Wykształcenie</h3>
-                <div class="education-item">
-                    <strong>Fullstack Developer</strong> | GoIT (2024–2025)
-                </div>
-                <div class="education-item">
-                    <strong>Statystyka dla Ekonomistów</strong> | Uniwersytet Rzeszowski (Studia podyplomowe)
-                </div>
-                <div class="education-item">
-                    <strong>Zarządzanie i Marketing</strong> | UMCS (Magisterskie)
-                </div>
-            </section>
-
-            <footer class="rodo">
-                Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu
-                rekrutacji zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia
-                2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie
-                swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).
-            </footer>
-
-        </main>
-    </div>
-
+.kawwwa-rose-btn2:hover::after {
+    animation: none;
+}
+   </style>
+<div>
+    <button class="kawwwa-rose-btn">przycisk</button>
+</div><br>
+<div>
+    <button class="kawwwa-rose-btn2">przycisk2</button>
+</div>
 </body>
 
 </html>

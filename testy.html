@@ -1,0 +1,365 @@
+
+
+<body>
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kobieca Moc AK - Header V1.6</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+<style>
+
+/* --- CSS VARIABLES (Paleta V1.6 Warm Luxury) --- */
+:root {
+    /* Kolory */
+    --color-bg-main: #F7F4ED;       /* Linen Cream (Tło po scrollu) */
+    --color-text-main: #3E3228;     /* Dark Truffle (Tekst po scrollu) */
+    --color-text-light: #F7F4ED;    /* Jasny tekst na starcie */
+    --color-accent-gold: #CFA670;   /* Honey Gold (Przyciski, akcenty) */
+
+    /* Fonty */
+    --font-ui: 'Montserrat', sans-serif;
+    /* --font-heading: 'Playfair Display', serif; (Tu nieużywany, ale w motywie tak) */
+
+    /* Inne */
+    --header-height-initial: 100px;
+    --header-height-scrolled: 70px;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Luksusowa animacja */
+    --shadow-soft: 0px 10px 30px -5px rgba(62, 50, 40, 0.08); /* Ciepły cień */
+}
+
+/* Reset podstawowy */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--font-ui);
+}
+
+/* === HEADER STYLES START === */
+
+/* 1. Kontener Główny Headera (Fixed) */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Zawsze na wierzchu */
+    background-color: transparent; /* Start: przezroczysty */
+    /* Kolor tekstu na starcie: JASNY */
+    color: var(--color-text-light);
+    /* Wysokość początkowa: DUŻA (luksusowy oddech) */
+    height: var(--header-height-initial);
+    transition: var(--transition-smooth); /* Płynne przejście stanów */
+}
+
+/* Wewnętrzny kontener Flexbox */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Szerokość treści */
+    max-width: 1400px; /* Max szerokość na dużych ekranach */
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 20px;
+}
+
+/* 2. Logo (SVG Magic) */
+.logo-container {
+    flex-shrink: 0; /* Logo się nie zgniata */
+}
+
+.header-logo-svg {
+    height: 45px; /* Wysokość logo na starcie */
+    width: auto;
+    display: block;
+    /* Kluczowe: dziedziczy kolor z rodzica (.header) */
+    fill: currentColor;
+    transition: var(--transition-smooth);
+}
+
+/* 3. Nawigacja (Linki) */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Odstęp między linkami */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: currentColor; /* Dziedziczy kolor z .header */
+    font-family: var(--font-ui);
+    font-weight: 500; /* Medium */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    position: relative; /* Dla podkreślenia */
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Luksusowe Złote Podkreślenie (Animacja) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent-gold);
+    /* Start: skala 0 (niewidoczne) */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav-link:hover::after {
+    /* Hover: skala 1 (widoczne od lewej do prawej) */
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* 4. Przycisk CTA (Primary Button - Złoty Standard) */
+.btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--color-accent-gold);
+    color: var(--color-text-light) !important; /* Zawsze jasny tekst na złotym */
+    font-family: var(--font-ui);
+    font-weight: 600; /* SemiBold */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    padding: 14px 36px; /* Hojny padding */
+    border-radius: 4px; /* Delikatne zaokrąglenie */
+    border: none;
+    cursor: pointer;
+    /* Miękki, miodowy cień */
+    box-shadow: 0px 4px 15px rgba(207, 166, 112, 0.4);
+    transition: var(--transition-smooth);
+}
+
+/* Hover "Mercedes" - Uniesienie i blask */
+.btn-primary:hover {
+    background-color: #D6B385; /* Lekkie rozjaśnienie */
+    transform: translateY(-3px); /* Fizyczne uniesienie */
+    box-shadow: 0px 8px 25px rgba(207, 166, 112, 0.5); /* Większy cień */
+}
+
+/* 5. Mobile Toggle (Hamburger - baza) */
+.mobile-toggle {
+    display: none; /* Na desktopie ukryty */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: currentColor; /* Dziedziczy kolor */
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+}
+
+/* === STAN SCROLLED (Sticky Header) === */
+/* Ta klasa jest dodawana przez JS po przewinięciu */
+.header.is-scrolled {
+    /* Tło: Ciepły Beż (Linen Cream) */
+    background-color: var(--color-bg-main);
+    /* Tekst i Logo: Ciemny Brąz (Dark Truffle) */
+    color: var(--color-text-main);
+    /* Wysokość: Kompaktowa */
+    height: var(--header-height-scrolled);
+    /* Cień: Subtelny, ciepły */
+    box-shadow: var(--shadow-soft);
+}
+
+.header.is-scrolled .header-logo-svg {
+    height: 40px; /* Logo lekko się zmniejsza */
+}
+
+/* === RESPONSIVE (Tablet & Mobile < 1024px) === */
+@media (max-width: 1024px) {
+    .desktop-only {
+        display: none; /* Ukrywamy menu i CTA desktopowe */
+    }
+    .mobile-toggle {
+        display: flex; /* Pokazujemy hamburgera */
+    }
+    /* Na mobile header jest zawsze trochę niższy */
+    .header {
+         height: 70px;
+    }
+}
+/* === HEADER STYLES END === */
+/* === NOWE ZMIENNE DLA WERSJI LUXE V2.0 === */
+:root {
+    /* Definiujemy złoto jako spektrum, nie jeden kolor */
+    --luxe-gold-light: #E6CFA8;  /* Jasny refleks (szampański) */
+    --luxe-gold-base: #CFA670;   /* Baza miodowa */
+    --luxe-gold-dark: #B38F5A;   /* Ciemniejszy ton do cieniowania */
+    --luxe-text-light: #FBF9F5;  /* Prawie biały, kremowy tekst */
+
+    /* Cień zewnętrzny - miękki blask */
+    --shadow-luxe-out: 0 10px 30px -5px rgba(179, 143, 90, 0.4);
+    /* Cień wewnętrzny - efekt szlifowanej krawędzi */
+    --shadow-luxe-inset: inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -2px 5px rgba(0,0,0,0.1);
+
+    /* Ultra-gładka animacja fizyczna */
+    --transition-s-class: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================================================
+   BAZA PRZYCISKÓW (Shared DNA)
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    position: relative;
+    padding: 15px 38px; /* Jeszcze odrobinę większe i stabilniejsze */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px; /* Większy oddech */
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px; /* Bardziej precyzyjne, mniej zaokrąglone rogi. Bardziej "techniczne" */
+    cursor: pointer;
+    transition: var(--transition-s-class);
+    /* Kluczowe dla efektu metalu: */
+    background-clip: padding-box;
+    /* Subtelna ramka definiująca krawędź */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-font-smoothing: antialiased;
+    z-index: 1;
+    overflow: hidden; /* Dla efektów świetlnych */
+}
+
+/* ==========================================================================
+   TYP 1: PRIMARY LUXE (Szlifowane Złoto)
+   ========================================================================== */
+.btn-primary {
+    /* Gradient imitujący metal - światło pada od góry */
+    background: linear-gradient(to bottom, var(--luxe-gold-light), var(--luxe-gold-base) 40%, var(--luxe-gold-dark));
+    color: var(--luxe-text-light);
+    /* Kombinacja cieni tworząca 3D */
+    box-shadow: var(--shadow-luxe-inset), var(--shadow-luxe-out);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Lekki cień tekstu dla czytelności */
+}
+
+/* HOVER: Rozświetlenie i napięcie */
+.btn-primary:hover {
+    /* Gradient staje się jaśniejszy, bardziej "aktywny" */
+    background: linear-gradient(to bottom, white, var(--luxe-gold-light) 30%, var(--luxe-gold-base));
+    transform: translateY(-2px) scale(1.01); /* Bardzo subtelne uniesienie i powiększenie */
+    /* Cień zewnętrzny staje się ostrzejszy i jaśniejszy */
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.6), /* Mocniejszy błysk na górnej krawędzi */
+        0 15px 35px rgba(207, 166, 112, 0.5);
+    color: white;
+}
+
+/* ACTIVE: Satysfakcjonujący klik */
+.btn-primary:active {
+    transform: translateY(1px) scale(0.99);
+    /* Cienie wewnętrzne się pogłębiają, przycisk "wchodzi" w ekran */
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.2);
+    background: linear-gradient(to bottom, var(--luxe-gold-dark), var(--luxe-gold-base));
+}
+
+/* ==========================================================================
+   TYP 2: SECONDARY LUXE (Metaliczna Ramka)
+   ========================================================================== */
+.btn-secondary {
+    background: transparent;
+    color: var(--luxe-gold-base);
+    /* Zamiast zwykłego bordera, używamy box-shadow do symulacji metalicznej ramki */
+    border: none;
+    box-shadow: inset 0 0 0 2px var(--luxe-gold-base); /* Wewnętrzna złota ramka */
+    padding: 14px 36px; /* Korekta paddingu */
+    position: relative;
+}
+
+/* HOVER: Wypełnienie płynnym złotem */
+.btn-secondary:hover {
+    /* Tło wypełnia się gradientem */
+    background: linear-gradient(to bottom right, var(--luxe-gold-light), var(--luxe-gold-base));
+    color: var(--luxe-text-light);
+    box-shadow: var(--shadow-luxe-out); /* Pojawia się blask pod spodem */
+    border: 1px solid rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+    <header id="main-header" class="header">
+        <div class="header-container">
+
+            <div class="logo-container">
+                <a href="/" aria-label="Strona główna Kobieca Moc">
+                    <svg class="header-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200"
+                        height="50">
+                        <circle cx="25" cy="25" r="20" fill="currentColor" />
+                        <text x="55" y="32" font-family="Playfair Display" font-weight="bold" font-size="24"
+                            fill="currentColor">KOBIECA MOC</text>
+                    </svg>
+                </a>
+            </div>
+
+            <nav class="main-nav desktop-only">
+                <ul class="nav-list">
+                    <li><a href="/o-mnie" class="nav-link">O mnie</a></li>
+                    <li><a href="/oferta" class="nav-link">Oferta</a></li>
+                    <li><a href="/metamorfozy" class="nav-link">Metamorfozy</a></li>
+                    <li><a href="/sklep" class="nav-link">Sklep</a></li>
+                    <li><a href="/kontakt" class="nav-link">Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <div class="cta-container desktop-only">
+                <a href="/kontakt" class="btn btn-primary">Umów konsultację</a>
+            </div>
+
+            <button class="mobile-toggle" aria-label="Otwórz menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+        </div>
+    </header>
+    <section class="hero-placeholder"
+        style="height: 100vh; background: linear-gradient(to top, #F7F4ED 0%, #a89f91 100%); display: flex; align-items: center; justify-content: center; color: white;">
+        <h1>Scrolluj w dół, aby zobaczyć efekt sticky header</h1>
+    </section>
+
+
+
+    <a href="/kontakt" class="btn btn-primary">Umów konsultację</a>
+    <button class="btn btn-primary">Oblicz teraz</button>
+    
+    <a href="/oferta" class="btn btn-secondary">Zobacz ofertę</a>
+    <section style="height: 100vh; background-color: #F7F4ED;"></section>
+
+
+</body>
+
+</html>
