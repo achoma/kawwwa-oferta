@@ -1,365 +1,718 @@
-
-
-<body>
 <!DOCTYPE html>
 <html lang="pl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kobieca Moc AK - Header V1.6</title>
+    <title>Zaproszenie Premium - Mobile Optimized | kawwwa.online</title>
+
+    <!-- Import Fontów Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap"
         rel="stylesheet">
 
-<style>
+    <style>
+        /* VARIABLES & DESIGN SYSTEM */
+        :root {
+            --bg-main: #FDFBF7;
+            /* Alabastrowa perła */
+            --bg-alt: #F5ECE1;
+            /* Szampański beż */
+            --text-main: #2C2523;
+            /* Ciepły antracyt */
+            --burgundy: #5A0E22;
+            /* Głęboki burgund */
+            --gold: #C9A66B;
+            /* Matowe złoto */
+            --font-h: 'Playfair Display', Georgia, serif;
+            --font-p: 'Montserrat', Arial, sans-serif;
+            --font-num: 'Cormorant Garamond', serif;
+        }
 
-/* --- CSS VARIABLES (Paleta V1.6 Warm Luxury) --- */
-:root {
-    /* Kolory */
-    --color-bg-main: #F7F4ED;       /* Linen Cream (Tło po scrollu) */
-    --color-text-main: #3E3228;     /* Dark Truffle (Tekst po scrollu) */
-    --color-text-light: #F7F4ED;    /* Jasny tekst na starcie */
-    --color-accent-gold: #CFA670;   /* Honey Gold (Przyciski, akcenty) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Fonty */
-    --font-ui: 'Montserrat', sans-serif;
-    /* --font-heading: 'Playfair Display', serif; (Tu nieużywany, ale w motywie tak) */
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* Inne */
-    --header-height-initial: 100px;
-    --header-height-scrolled: 70px;
-    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Luksusowa animacja */
-    --shadow-soft: 0px 10px 30px -5px rgba(62, 50, 40, 0.08); /* Ciepły cień */
-}
+        body {
+            font-family: var(--font-p);
+            color: var(--text-main);
+            background-color: var(--bg-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 70px;
+            /* Bezpieczna przestrzeń pod Sticky Bottom Bar na mobile */
+        }
 
-/* Reset podstawowy */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-body {
-    font-family: var(--font-ui);
-}
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-h);
+            font-weight: 400;
+            color: var(--burgundy);
+        }
 
-/* === HEADER STYLES START === */
+        p {
+            font-weight: 300;
+            font-size: 15px;
+        }
 
-/* 1. Kontener Główny Headera (Fixed) */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Zawsze na wierzchu */
-    background-color: transparent; /* Start: przezroczysty */
-    /* Kolor tekstu na starcie: JASNY */
-    color: var(--color-text-light);
-    /* Wysokość początkowa: DUŻA (luksusowy oddech) */
-    height: var(--header-height-initial);
-    transition: var(--transition-smooth); /* Płynne przejście stanów */
-}
+        /* PREMIUM TOUCH TARGET BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 18px 36px;
+            /* Zwiększony padding pod ekrany dotykowe */
+            background-color: var(--gold);
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 500;
+            border: none;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            width: auto;
+        }
 
-/* Wewnętrzny kontener Flexbox */
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%; /* Szerokość treści */
-    max-width: 1400px; /* Max szerokość na dużych ekranach */
-    margin: 0 auto;
-    height: 100%;
-    padding: 0 20px;
-}
+        .btn:hover {
+            background-color: var(--burgundy);
+            transform: scale(1.01);
+        }
 
-/* 2. Logo (SVG Magic) */
-.logo-container {
-    flex-shrink: 0; /* Logo się nie zgniata */
-}
+        /* GLOBAL SECTIONS */
+        section {
+            padding: 100px 20px;
+            text-align: center;
+        }
 
-.header-logo-svg {
-    height: 45px; /* Wysokość logo na starcie */
-    width: auto;
-    display: block;
-    /* Kluczowe: dziedziczy kolor z rodzica (.header) */
-    fill: currentColor;
-    transition: var(--transition-smooth);
-}
+        .bg-alt {
+            background-color: var(--bg-alt);
+        }
 
-/* 3. Nawigacja (Linki) */
-.nav-list {
-    display: flex;
-    list-style: none;
-    gap: 30px; /* Odstęp między linkami */
-}
+        .bg-dark {
+            background-color: var(--burgundy);
+            color: #FDFBF7;
+        }
 
-.nav-link {
-    text-decoration: none;
-    color: currentColor; /* Dziedziczy kolor z .header */
-    font-family: var(--font-ui);
-    font-weight: 500; /* Medium */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 14px;
-    position: relative; /* Dla podkreślenia */
-    padding: 5px 0;
-    transition: color 0.3s ease;
-}
+        .bg-dark h2,
+        .bg-dark h3,
+        .bg-dark p {
+            color: #FDFBF7;
+        }
 
-/* Luksusowe Złote Podkreślenie (Animacja) */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-accent-gold);
-    /* Start: skala 0 (niewidoczne) */
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-.nav-link:hover::after {
-    /* Hover: skala 1 (widoczne od lewej do prawej) */
-    transform: scaleX(1);
-    transform-origin: left;
-}
+        /* DESKTOP NAVIGATION */
+        nav.desktop-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(253, 251, 247, 0.98);
+            border-bottom: 1px solid rgba(201, 166, 107, 0.15);
+            z-index: 100;
+            text-align: center;
+        }
 
-/* 4. Przycisk CTA (Primary Button - Złoty Standard) */
-.btn-primary {
-    display: inline-block;
-    text-decoration: none;
-    background-color: var(--color-accent-gold);
-    color: var(--color-text-light) !important; /* Zawsze jasny tekst na złotym */
-    font-family: var(--font-ui);
-    font-weight: 600; /* SemiBold */
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 14px;
-    padding: 14px 36px; /* Hojny padding */
-    border-radius: 4px; /* Delikatne zaokrąglenie */
-    border: none;
-    cursor: pointer;
-    /* Miękki, miodowy cień */
-    box-shadow: 0px 4px 15px rgba(207, 166, 112, 0.4);
-    transition: var(--transition-smooth);
-}
+        nav.desktop-nav a {
+            margin: 0 15px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
 
-/* Hover "Mercedes" - Uniesienie i blask */
-.btn-primary:hover {
-    background-color: #D6B385; /* Lekkie rozjaśnienie */
-    transform: translateY(-3px); /* Fizyczne uniesienie */
-    box-shadow: 0px 8px 25px rgba(207, 166, 112, 0.5); /* Większy cień */
-}
+        nav.desktop-nav a:hover {
+            color: var(--burgundy);
+        }
 
-/* 5. Mobile Toggle (Hamburger - baza) */
-.mobile-toggle {
-    display: none; /* Na desktopie ukryty */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
+        /* MOBILE STICKY BOTTOM BAR */
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--gold);
+            display: none;
+            /* Domyślnie ukryty na desktopie */
+            justify-content: space-around;
+            align-items: center;
+            z-index: 999;
+            padding: 0 10px;
+        }
 
-.mobile-toggle .bar {
-    height: 3px;
-    width: 100%;
-    background-color: currentColor; /* Dziedziczy kolor */
-    border-radius: 10px;
-    transition: var(--transition-smooth);
-}
+        .sticky-bottom-bar .nav-item {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            color: var(--text-main);
+            text-align: center;
+            flex: 1;
+        }
 
-/* === STAN SCROLLED (Sticky Header) === */
-/* Ta klasa jest dodawana przez JS po przewinięciu */
-.header.is-scrolled {
-    /* Tło: Ciepły Beż (Linen Cream) */
-    background-color: var(--color-bg-main);
-    /* Tekst i Logo: Ciemny Brąz (Dark Truffle) */
-    color: var(--color-text-main);
-    /* Wysokość: Kompaktowa */
-    height: var(--header-height-scrolled);
-    /* Cień: Subtelny, ciepły */
-    box-shadow: var(--shadow-soft);
-}
+        .sticky-bottom-bar .nav-item.cta-item {
+            background-color: var(--burgundy);
+            color: #ffffff;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
 
-.header.is-scrolled .header-logo-svg {
-    height: 40px; /* Logo lekko się zmniejsza */
-}
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 8px solid var(--burgundy);
+            padding-top: 80px;
+        }
 
-/* === RESPONSIVE (Tablet & Mobile < 1024px) === */
-@media (max-width: 1024px) {
-    .desktop-only {
-        display: none; /* Ukrywamy menu i CTA desktopowe */
-    }
-    .mobile-toggle {
-        display: flex; /* Pokazujemy hamburgera */
-    }
-    /* Na mobile header jest zawsze trochę niższy */
-    .header {
-         height: 70px;
-    }
-}
-/* === HEADER STYLES END === */
-/* === NOWE ZMIENNE DLA WERSJI LUXE V2.0 === */
-:root {
-    /* Definiujemy złoto jako spektrum, nie jeden kolor */
-    --luxe-gold-light: #E6CFA8;  /* Jasny refleks (szampański) */
-    --luxe-gold-base: #CFA670;   /* Baza miodowa */
-    --luxe-gold-dark: #B38F5A;   /* Ciemniejszy ton do cieniowania */
-    --luxe-text-light: #FBF9F5;  /* Prawie biały, kremowy tekst */
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
 
-    /* Cień zewnętrzny - miękki blask */
-    --shadow-luxe-out: 0 10px 30px -5px rgba(179, 143, 90, 0.4);
-    /* Cień wewnętrzny - efekt szlifowanej krawędzi */
-    --shadow-luxe-inset: inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -2px 5px rgba(0,0,0,0.1);
+        .hero p {
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
 
-    /* Ultra-gładka animacja fizyczna */
-    --transition-s-class: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
+        /* STORY GRIDS & CARDS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            text-align: left;
+            margin-top: 40px;
+        }
 
-/* ==========================================================================
-   BAZA PRZYCISKÓW (Shared DNA)
-   ========================================================================== */
-.btn {
-    display: inline-block;
-    position: relative;
-    padding: 15px 38px; /* Jeszcze odrobinę większe i stabilniejsze */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1.8px; /* Większy oddech */
-    text-decoration: none;
-    text-align: center;
-    border-radius: 3px; /* Bardziej precyzyjne, mniej zaokrąglone rogi. Bardziej "techniczne" */
-    cursor: pointer;
-    transition: var(--transition-s-class);
-    /* Kluczowe dla efektu metalu: */
-    background-clip: padding-box;
-    /* Subtelna ramka definiująca krawędź */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    -webkit-font-smoothing: antialiased;
-    z-index: 1;
-    overflow: hidden; /* Dla efektów świetlnych */
-}
+        .img-placeholder {
+            width: 100%;
+            height: 480px;
+            background-color: #EADFCF;
+            border: 1px solid var(--gold);
+            box-shadow: -12px 12px 0px 0px var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-h);
+            font-style: italic;
+            color: var(--burgundy);
+        }
 
-/* ==========================================================================
-   TYP 1: PRIMARY LUXE (Szlifowane Złoto)
-   ========================================================================== */
-.btn-primary {
-    /* Gradient imitujący metal - światło pada od góry */
-    background: linear-gradient(to bottom, var(--luxe-gold-light), var(--luxe-gold-base) 40%, var(--luxe-gold-dark));
-    color: var(--luxe-text-light);
-    /* Kombinacja cieni tworząca 3D */
-    box-shadow: var(--shadow-luxe-inset), var(--shadow-luxe-out);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Lekki cień tekstu dla czytelności */
-}
+        /* ADVANCED TIMELINE (STEP SYSTEM) */
+        .timeline-container {
+            margin-top: 60px;
+            position: relative;
+        }
 
-/* HOVER: Rozświetlenie i napięcie */
-.btn-primary:hover {
-    /* Gradient staje się jaśniejszy, bardziej "aktywny" */
-    background: linear-gradient(to bottom, white, var(--luxe-gold-light) 30%, var(--luxe-gold-base));
-    transform: translateY(-2px) scale(1.01); /* Bardzo subtelne uniesienie i powiększenie */
-    /* Cień zewnętrzny staje się ostrzejszy i jaśniejszy */
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.6), /* Mocniejszy błysk na górnej krawędzi */
-        0 15px 35px rgba(207, 166, 112, 0.5);
-    color: white;
-}
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background-color: rgba(201, 166, 107, 0.4);
+            transform: translateX(-50%);
+        }
 
-/* ACTIVE: Satysfakcjonujący klik */
-.btn-primary:active {
-    transform: translateY(1px) scale(0.99);
-    /* Cienie wewnętrzne się pogłębiają, przycisk "wchodzi" w ekran */
-    box-shadow: inset 0 3px 8px rgba(0,0,0,0.2);
-    background: linear-gradient(to bottom, var(--luxe-gold-dark), var(--luxe-gold-base));
-}
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 1fr 100px 1fr;
+            margin-bottom: 5px;
+            align-items: center;
+            text-align: left;
+        }
 
-/* ==========================================================================
-   TYP 2: SECONDARY LUXE (Metaliczna Ramka)
-   ========================================================================== */
-.btn-secondary {
-    background: transparent;
-    color: var(--luxe-gold-base);
-    /* Zamiast zwykłego bordera, używamy box-shadow do symulacji metalicznej ramki */
-    border: none;
-    box-shadow: inset 0 0 0 2px var(--luxe-gold-base); /* Wewnętrzna złota ramka */
-    padding: 14px 36px; /* Korekta paddingu */
-    position: relative;
-}
+        .timeline-row:nth-child(even) .timeline-card {
+            grid-column: 3;
+        }
 
-/* HOVER: Wypełnienie płynnym złotem */
-.btn-secondary:hover {
-    /* Tło wypełnia się gradientem */
-    background: linear-gradient(to bottom right, var(--luxe-gold-light), var(--luxe-gold-base));
-    color: var(--luxe-text-light);
-    box-shadow: var(--shadow-luxe-out); /* Pojawia się blask pod spodem */
-    border: 1px solid rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-}
+        .timeline-row:nth-child(even) .timeline-spacer {
+            grid-column: 1;
+        }
 
-</style>
+        .timeline-card {
+            background: #ffffff;
+            padding: 35px;
+            border-left: 4px solid var(--burgundy);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.01);
+        }
 
+        .timeline-time {
+            font-family: var(--font-h);
+            color: var(--gold);
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
 
+        .timeline-title {
+            font-family: var(--font-h);
+            font-size: 18px;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        .timeline-icon-cell {
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .timeline-circle {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background-color: var(--burgundy);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border: 2px solid var(--gold);
+        }
+
+        /* MENU WESELNE */
+        .menu-container {
+            max-width: 600px;
+            margin: 40px auto 0;
+        }
+
+        .menu-block {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(201, 166, 107, 0.15);
+        }
+
+        .menu-block h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .menu-line {
+            width: 40px;
+            height: 1px;
+            background-color: var(--gold);
+            margin: 12px auto;
+        }
+
+        /* BOXES (LOKALIZACJE / GRY) */
+        .location-box {
+            background: #ffffff;
+            padding: 45px 35px;
+            border-top: 3px solid var(--gold);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.01);
+            text-align: center;
+        }
+
+        .location-box h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .game-box {
+            border: 1px solid rgba(201, 166, 107, 0.25);
+        }
+
+        /* FORMS */
+        .form-wrapper {
+            max-width: 500px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+
+        .form-wrapper input,
+        .form-wrapper textarea {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 25px;
+            border: none;
+            border-bottom: 1px solid var(--gold);
+            background: transparent;
+            font-family: var(--font-p);
+            color: var(--text-main);
+            font-size: 15px;
+        }
+
+        .form-wrapper input:focus,
+        .form-wrapper textarea:focus {
+            outline: none;
+            border-bottom: 2px solid var(--burgundy);
+        }
+
+        /* STREFA GOŚCIA */
+        .password-wrapper {
+            max-width: 360px;
+            margin: 30px auto 0;
+        }
+
+        .password-wrapper input {
+            width: 100%;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: none;
+            border-bottom: 1px solid var(--gold);
+            color: #ffffff;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* RWD BREAKPOINT: MOBILE DEGRADATION */
+        @media (max-width: 768px) {
+            nav.desktop-nav {
+                display: none;
+            }
+
+            .sticky-bottom-bar {
+                display: flex;
+            }
+
+            /* Aktywacja dolnego paska nawigacji */
+
+            section {
+                padding: 70px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .img-placeholder {
+                height: 360px;
+                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.03);
+            }
+
+            /* Spłaszczenie osi czasu do krawędzi lewej */
+            .timeline-container::before {
+                left: 16px;
+                transform: none;
+            }
+
+            .timeline-row {
+                grid-template-columns: 32px 1fr;
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+
+            .timeline-row:nth-child(even) .timeline-card {
+                grid-column: 2;
+            }
+
+            .timeline-spacer {
+                display: none;
+            }
+
+            .timeline-icon-cell {
+                grid-column: 1;
+                justify-content: flex-start;
+            }
+
+            .timeline-circle {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+
+            .timeline-card {
+                grid-column: 2;
+                border-left: 3px solid var(--gold);
+                padding: 25px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 20px;
+            }
+
+            /* Pełna szerokość buttonów ułatwia klikanie */
+        }
+    </style>
 </head>
 
 <body>
 
-    <header id="main-header" class="header">
-        <div class="header-container">
+    <!-- DESKTOP STICKY NAVIGATION -->
+    <nav class="desktop-nav">
+        <a href="#historia">Nasza Historia</a>
+        <a href="#harmonogram">Plan Dnia</a>
+        <a href="#menu">Menu</a>
+        <a href="#lokalizacje">Lokalizacje</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#strefa-goscia">Strefa Gościa</a>
+    </nav>
 
-            <div class="logo-container">
-                <a href="/" aria-label="Strona główna Kobieca Moc">
-                    <svg class="header-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200"
-                        height="50">
-                        <circle cx="25" cy="25" r="20" fill="currentColor" />
-                        <text x="55" y="32" font-family="Playfair Display" font-weight="bold" font-size="24"
-                            fill="currentColor">KOBIECA MOC</text>
-                    </svg>
-                </a>
+    <!-- MOBILE STICKY BOTTOM BAR (Zdejmuje ciężar szukania menu) -->
+    <div class="sticky-bottom-bar">
+        <a href="#harmonogram" class="nav-item">Plan Dnia</a>
+        <a href="#lokalizacje" class="nav-item">Dojazd</a>
+        <a href="#strefa-goscia" class="nav-item">Stoły</a>
+        <a href="#rsvp" class="nav-item cta-item">Potwierdź RSVP</a>
+    </div>
+
+    <!-- SEKCJA 1: HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Anna & Mateusz</h1>
+            <p>12 Sierpnia 2027 | Pałac w Balicach</p>
+
+            <!-- INTEGRACJA NASZEGO IDEALNEGO LICZNIKA (STYL BURGUNDOWY) -->
+            <div style="text-align: center; padding: 40px 10px 10px 10px;">
+                <h3
+                    style="font-family: var(--font-h); font-size: 18px; color: var(--gold); margin-bottom: 25px; font-style: italic;">
+                    Mgnienie oka dzieli nas od wspólnego świętowania...</h3>
+                <div style="display: inline-flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center; width: 55px;">
+                        <div id="cd-days"
+                            style="font-family: var(--font-num); font-size: 44px; font-weight: 300; color: var(--burgundy); line-height: 1;">
+                            00</div>
+                        <div style="font-size: 8px; opacity: 0.5; letter-spacing: 2px; margin-top: 10px;">DNI</div>
+                    </div>
+                    <div
+                        style="width: 1px; height: 32px; background-color: var(--gold); opacity: 0.3; margin: 0 16px; transform: translateY(-6px);">
+                    </div>
+                    <div style="text-align: center; width: 55px;">
+                        <div id="cd-hours"
+                            style="font-family: var(--font-num); font-size: 44px; font-weight: 300; color: var(--burgundy); line-height: 1;">
+                            00</div>
+                        <div style="font-size: 8px; opacity: 0.5; letter-spacing: 2px; margin-top: 10px;">GODZ</div>
+                    </div>
+                    <div
+                        style="width: 1px; height: 32px; background-color: var(--gold); opacity: 0.3; margin: 0 16px; transform: translateY(-6px);">
+                    </div>
+                    <div style="text-align: center; width: 55px;">
+                        <div id="cd-minutes"
+                            style="font-family: var(--font-num); font-size: 44px; font-weight: 300; color: var(--burgundy); line-height: 1;">
+                            00</div>
+                        <div style="font-size: 8px; opacity: 0.5; letter-spacing: 2px; margin-top: 10px;">MIN</div>
+                    </div>
+                    <div
+                        style="width: 1px; height: 32px; background-color: var(--gold); opacity: 0.3; margin: 0 16px; transform: translateY(-6px);">
+                    </div>
+                    <div style="text-align: center; width: 55px;">
+                        <div id="cd-seconds"
+                            style="font-family: var(--font-num); font-size: 44px; font-weight: 300; color: var(--burgundy); line-height: 1;">
+                            00</div>
+                        <div style="font-size: 8px; opacity: 0.5; letter-spacing: 2px; margin-top: 10px;">SEK</div>
+                    </div>
+                </div>
             </div>
 
-            <nav class="main-nav desktop-only">
-                <ul class="nav-list">
-                    <li><a href="/o-mnie" class="nav-link">O mnie</a></li>
-                    <li><a href="/oferta" class="nav-link">Oferta</a></li>
-                    <li><a href="/metamorfozy" class="nav-link">Metamorfozy</a></li>
-                    <li><a href="/sklep" class="nav-link">Sklep</a></li>
-                    <li><a href="/kontakt" class="nav-link">Kontakt</a></li>
-                </ul>
-            </nav>
-
-            <div class="cta-container desktop-only">
-                <a href="/kontakt" class="btn btn-primary">Umów konsultację</a>
-            </div>
-
-            <button class="mobile-toggle" aria-label="Otwórz menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
+            <a href="#rsvp" class="btn">Potwierdź Obecność</a>
         </div>
-    </header>
-    <section class="hero-placeholder"
-        style="height: 100vh; background: linear-gradient(to top, #F7F4ED 0%, #a89f91 100%); display: flex; align-items: center; justify-content: center; color: white;">
-        <h1>Scrolluj w dół, aby zobaczyć efekt sticky header</h1>
     </section>
 
+    <!-- SEKCJA 2: NASZA HISTORIA -->
+    <section id="historia">
+        <div class="container">
+            <div class="grid-2">
+                <div class="img-placeholder">Zdjęcie Pary Młodej (3:4)</div>
+                <div class="story-text">
+                    <h2>Nasza Historia</h2>
+                    <p>Klasyczna i ponadczasowa opowieść o naszej wspólnej drodze. Od pierwszego spotkania, przez chwile
+                        pełne śmiechu, aż po wielkie zaręczyny w sercu starego Rzymu. Dziś stoimy u progu nowego
+                        rozdziału i nie wyobrażamy sobie tego dnia bez Was.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- SEKCJA 3: HARMONOGRAM DNIA -->
+    <section id="harmonogram" class="bg-alt">
+        <div class="container">
+            <h2>Harmonogram Uroczystości</h2>
+            <p>Piękne chwile zamknięte w precyzyjne ramy czasowych.</p>
 
-    <a href="/kontakt" class="btn btn-primary">Umów konsultację</a>
-    <button class="btn btn-primary">Oblicz teraz</button>
-    
-    <a href="/oferta" class="btn btn-secondary">Zobacz ofertę</a>
-    <section style="height: 100vh; background-color: #F7F4ED;"></section>
+            <div class="timeline-container">
+                <div class="timeline-row">
+                    <div class="timeline-card">
+                        <div class="timeline-time">15:00</div>
+                        <div class="timeline-title">Ceremonia Zaślubin</div>
+                        <p>Uroczysta przysięga małżeńska w zabytkowym kościele św. Apostołów Piotra i Pawła przy ul.
+                            Grodzkiej.</p>
+                    </div>
+                    <div class="timeline-icon-cell">
+                        <div class="timeline-circle">&#10084;</div>
+                    </div>
+                    <div class="timeline-spacer"></div>
+                </div>
 
+                <div class="timeline-row">
+                    <div class="timeline-spacer"></div>
+                    <div class="timeline-icon-cell">
+                        <div class="timeline-circle">&#129346;</div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-time">17:00</div>
+                        <div class="timeline-title">Toast Powitalny & Życzenia</div>
+                        <p>Przejazd do Pałacu w Balicach. Uroczyste powitanie Pary Młodej, lampka szampana oraz życzenia
+                            w ogrodach.</p>
+                    </div>
+                </div>
 
+                <div class="timeline-row">
+                    <div class="timeline-card">
+                        <div class="timeline-time">18:00</div>
+                        <div class="timeline-title">Wykwintny Obiad Weselny</div>
+                        <p>Uroczyste rozpoczęcie części bankietowej. Serwowanie trzydaniowego menu głównego oraz
+                            oficjalne otwarcie parkietu.</p>
+                    </div>
+                    <div class="timeline-icon-cell">
+                        <div class="timeline-circle">&#127869;</div>
+                    </div>
+                    <div class="timeline-spacer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA 4: MENU WESELNE -->
+    <section id="menu">
+        <div class="container">
+            <h2>Menu Weselne</h2>
+            <div class="menu-container">
+                <div class="menu-block">
+                    <h3>Obiad Główny</h3>
+                    <div class="menu-line"></div>
+                    <p>Krem z białych szparagów z oliwą truflową, polędwiczki w sosie borowikowym z kopytkami maślanymi.
+                    </p>
+                </div>
+                <div class="menu-block">
+                    <h3>Atrakcje Wieczoru</h3>
+                    <div class="menu-line"></div>
+                    <p>Drink Bar z autorskimi koktajlami oraz tradycyjny stół wiejski w nowoczesnym wydaniu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA 5: LOKALIZACJE & NAWIGACJA -->
+    <section id="lokalizacje" class="bg-alt">
+        <div class="container">
+            <h2>Lokalizacje & Dojazd</h2>
+            <div class="grid-2">
+                <div class="location-box">
+                    <h3>Ceremonia Ślubna</h3>
+                    <p>Kościół św. Piotra i Pawła<br>ul. Grodzka 52, Kraków</p>
+                    <a href="#" class="btn">Nawiguj</a>
+                </div>
+                <div class="location-box">
+                    <h3>Przyjęcie Weselne</h3>
+                    <p>Pałac w Balicach<br>ul. Pałacowa 1, Balice</p>
+                    <a href="#" class="btn">Nawiguj</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA 6: RSVP (FORMULARZ) -->
+    <section id="rsvp">
+        <div class="container">
+            <h2>Potwierdzenie Przybycia</h2>
+            <div class="form-wrapper">
+                <input type="text" placeholder="Imię i Nazwisko gościa">
+                <input type="text" placeholder="Alergie lub wymagania dietetyczne">
+                <button class="btn">Wyślij Potwierdzenie</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA 7: INTERAKTYWNA STREFA ROZRYWKI -->
+    <section id="gry" class="bg-alt">
+        <div class="container">
+            <h2>Strefa Rozrywki</h2>
+            <div class="grid-2">
+                <div class="location-box game-box">
+                    <h3>Weselne Bingo</h3>
+                    <p>Zaznaczaj wydarzenia na żywo ze swojego telefonu i wygrywaj nagrody!</p>
+                    <a href="https://weselne.bingo" target="_blank" class="btn">Uruchom Bingo</a>
+                </div>
+                <div class="location-box game-box">
+                    <h3>Quiz Kahoot</h3>
+                    <p>Sprawdź swoją wiedzę o Parze Młodej podczas wieczornego turnieju.</p>
+                    <a href="https://kahoot.it" target="_blank" class="btn">Wejdź do Gry</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA 8: ZABEZPIECZONA STREFA GOŚCIA -->
+    <section id="strefa-goscia" class="bg-dark">
+        <div class="container">
+            <h2>Zabezpieczona Strefa Gościa</h2>
+            <p>Wpisz hasło z zaproszenia, aby sprawdzić przydział stołu i uploader zdjęć.</p>
+            <div class="password-wrapper">
+                <input type="password" placeholder="Hasło">
+                <button class="btn" style="background-color: var(--gold);">Zaloguj się</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKRYPT LICZNIKA -->
+    <script>
+        (function () {
+            const targetDate = new Date("2026-07-31T15:00:00").getTime();
+            const elDays = document.getElementById("cd-days");
+            const elHours = document.getElementById("cd-hours");
+            const elMinutes = document.getElementById("cd-minutes");
+            const elSeconds = document.getElementById("cd-seconds");
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance <= 0) {
+                    if (elDays) elDays.parentElement.parentElement.innerHTML = "<div style='color: var(--burgundy); font-family: var(--font-h); font-size: 20px; font-style: italic;'>To właśnie ten dzień!</div>";
+                    clearInterval(timer);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                elDays.textContent = days < 10 ? '0' + days : days;
+                elHours.textContent = hours < 10 ? '0' + hours : hours;
+                elMinutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+                elSeconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+            }
+
+            updateCountdown();
+            const timer = setInterval(updateCountdown, 1000);
+        })();
+    </script>
 </body>
 
 </html>
